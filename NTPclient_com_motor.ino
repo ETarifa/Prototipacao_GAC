@@ -3,8 +3,8 @@
 #include <WiFiUdp.h>//Biblioteca do UDP.
 #include <WiFi.h>//Biblioteca do WiFi.
 
-const char* ssid     = "Sexta-feira";
-const char* password = "0987654321";
+const char* ssid     = ""; //aqui vai o nome da rede na qual vc esta conectando o ESP32
+const char* password = ""; //aqui vai a senha da rede
 
 char horaInformada = "";
 
@@ -70,7 +70,8 @@ void loop()
    delay(1000);//Espera 1 segundo.
 }
 
-/
+//O codigo a seguir é do sensor com motor, mas ja tem outro sketch com esse codigo funcionando.
+/*
 int pinosensor = 3;
 int pino_led_cheio = 4;
 int pino_led_vazio = 5;
@@ -132,4 +133,4 @@ void loop()
   }
   delay(100);
 }
-
+*/
