@@ -1,10 +1,9 @@
-int pinosensor = 17;
+int pinosensor = 2;
 //int pino_led_cheio = 5;
 //int pino_led_vazio = 4;
 
 //int velocidade = 2;
-int IN1 = 18;
-int IN2 = 19;
+const int rele = 4;
 
 void setup()
 {
@@ -14,8 +13,7 @@ void setup()
   //pinMode(pino_led_vazio, OUTPUT);
   
   //pinMode(velocidade, OUTPUT);
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
+  pinMode(rele, OUTPUT);
 }
 
 void loop()
@@ -34,28 +32,30 @@ void loop()
     //digitalWrite(pino_led_cheio, LOW);
     
     //analogWrite(velocidade, 500); 
-    digitalWrite(IN1, HIGH);     //liga o motor pra girar o registro
-    digitalWrite(IN2, LOW);
-    delay(3000);
-    digitalWrite(IN1, HIGH);     //para o motor
-    digitalWrite(IN2, HIGH);
+    digitalWrite(rele, HIGH);     //libera o rele para abrir a solenoide
+    //delay(3000);
+    
     
     while (estado == 1)
     {
       estado = digitalRead(pinosensor); //verifica o nível do pote 
     }
+
+    delay(3000);
+    digitalWrite(rele, LOW);     //fecha o rele, fecha a solenoide
     
     //digitalWrite(pino_led_vazio, LOW);
     //digitalWrite(pino_led_cheio, HIGH);  
     //analogWrite(velocidade, 500);
-    digitalWrite(IN1, LOW);     //liga o motor no sentido inverso pra fechar o reservatorio
-    digitalWrite(IN2, HIGH);
-    delay(3000);
+    //digitalWrite(IN1, LOW);     //liga o motor no sentido inverso pra fechar o reservatorio
+    //digitalWrite(IN2, HIGH);
+    //delay(3000);
       
-    digitalWrite(IN1, HIGH);     //para o motor e volta pro estado de cheio
-    digitalWrite(IN2, HIGH);
+    //digitalWrite(IN1, HIGH);     //para o motor e volta pro estado de cheio
+    //digitalWrite(IN2, HIGH);
     
     break;
   }
+
   delay(100);
 }
